@@ -25,6 +25,13 @@ if page == "📊 Main Dashboard":
     st.title("International Student Expense Dashboard")
     st.text("Hi, I'm Martina! An international student trying to manage my finances while taking up a postgraduate degree in Software Engineering at the University of Sydney. This dashboard is a personal project to track and analyze my expenses as an international student. I hope that by sharing my data and insights, I can help other students who are in a similar situation to better understand their own spending habits and find ways to save money. The data is sourced from my personal records, and I have categorized my expenses into different categories such as groceries, rent, transportation, and entertainment. I will be updating this dashboard regularly to reflect my latest expenses and insights.")
 
+    # st.caption(
+    #     "Running in Streamlit Cloud"
+    #     if "gcp_service_account" in st.secrets
+    #     else "Running locally"
+    # )
+
+
     col1, col2, col3 = st.columns(3)
     col1.metric("Total Expenses", f"${expenses_df['Amount'].sum():,.2f}")
     col2.metric("Total Allowance", f"${income_df['Amount'].sum():,.2f}")
