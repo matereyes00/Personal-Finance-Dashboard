@@ -1,0 +1,5 @@
+venv/
+.env
+creds/
+__pycache__/
+*.pyc
