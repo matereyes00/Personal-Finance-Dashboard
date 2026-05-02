@@ -14,6 +14,9 @@ from charts.time_series import expenses_vs_allowance_chart, projected_weekly_gro
 from charts.category import top_category_pie, top_category_pie_by_month
 from utils.conversion_rate import get_rates
 
+from sections.cut_expenses.rent import rent
+from sections.cut_expenses.entertainment import entertainment_cut
+
 st.set_page_config(page_title="Expense Dashboard", layout="wide")
 
 LOGO_SIZE = 200
@@ -26,7 +29,7 @@ savers_df = load_sheet("food_savers")
 
 
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["📊 Main Dashboard", "📂 Raw Data"])
+page = st.sidebar.radio("Go to", ["📊 Main Dashboard", "Cutting Expenses", "📂 Raw Data"])
 
 if page == "📊 Main Dashboard":
     st.title("International Student Expense Dashboard")
@@ -65,6 +68,16 @@ if page == "📊 Main Dashboard":
     st.divider(width="stretch")
     st.header("🚗 Transportation")
 
+elif page == "Cutting Expenses":
+    st.title("Cutting Expenses")
+    # st.write("Here are some of the strategies I use to cut down on my expenses:")
+    # st.markdown("- **Cooking at home**: I try to cook most of my meals at home instead of eating out. This not only saves me money but also allows me to eat healthier.")
+    # st.markdown("- **Using discounts and coupons**: I always look for discounts and coupons when shopping for groceries or other essentials. I also take advantage of student discounts whenever possible.")
+    # st.markdown("- **Buying in bulk**: For non-perishable items, I buy in bulk to save money in the long run. This is especially helpful for items like rice, pasta, and canned goods.")
+    # st.markdown("- **Using public transportation**: Instead of owning a car, I use public transportation to get around. This saves me money on gas, insurance, and maintenance.")
+    # st.markdown("- **Finding free or low-cost entertainment**: I look for free or low-cost entertainment options, such as visiting parks, attending community events, or watching movies at home instead of going to the cinema.")
+    rent()
+    entertainment_cut(expenses_df=expenses_df)
         
 else:
     st.title("Raw Data")
